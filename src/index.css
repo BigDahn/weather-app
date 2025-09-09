@@ -1,4 +1,22 @@
+@font-face {
+    font-family: DM_SANS;
+    src: url(../public/fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf);
+}
+
+@font-face {
+    font-family: Bricolage_Grotesque;
+    src: url(../public/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.ttf);
+}
+
 @import "tailwindcss";
+
+@theme{
+    --font-DM_SANS: DM_SANS
+    --font-Bricolage_Grotesque:Bricolage_Grotesque
+}
+@theme {
+    --font-Bricolage_Grotesque:Bricolage_Grotesque
+}
 
 body{
     background-color: #02012C;

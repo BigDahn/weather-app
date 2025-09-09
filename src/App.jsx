@@ -1,7 +1,11 @@
-import React from "react";
+import Main from "./components/Main";
 
 function App() {
-  return <div className="bg-green-300">App</div>;
+  return (
+    <div className="h-full max-w-[90rem] mx-auto py-[2rem]">
+      <Main />
+    </div>
+  );
 }
 
 export default App;

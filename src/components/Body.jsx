@@ -1,11 +1,11 @@
 import SearchBar from "./SearchBar";
+import WeatherContainer from "./WeatherContainer";
 
 function Body() {
   return (
-    <div className="">
-      <div>
-        <SearchBar />
-      </div>
+    <div className="flex flex-col gap-4 pb-3">
+      <SearchBar />
+      <WeatherContainer />
     </div>
   );
 }

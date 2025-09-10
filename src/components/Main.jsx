@@ -1,12 +1,13 @@
-import React from "react";
-import Heading from "./Heading";
+import Header from "../ui/Header";
 import Body from "./Body";
 
 function Main() {
   return (
-    <div className=" min-h-fit flex flex-col gap-[1rem]">
-      <Heading />
-      <Body />
+    <div className="flex  flex-col items-center gap-4">
+      <Header />
+      <section className="w-full">
+        <Body />
+      </section>
     </div>
   );
 }

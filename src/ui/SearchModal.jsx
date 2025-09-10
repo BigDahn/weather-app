@@ -8,7 +8,7 @@ function SearchModal() {
     <div
       className={`${
         results?.length > 4 && !isLoading
-          ? "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px] overflow-y-scroll "
+          ? "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px] overflow-y-scroll  "
           : "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px]   "
       }`}
     >

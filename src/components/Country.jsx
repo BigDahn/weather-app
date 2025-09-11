@@ -18,7 +18,7 @@ function Country() {
       </main>
 
       <div className=" flex flex-col gap-2">
-        <h1 className="text-white font-DM_SANS font-semibold text-[20px]">
+        <h1 className="text-white font-DM_SANS font-semibold text-[17px]">
           Daily forecast
         </h1>
         <DailyForeCast />

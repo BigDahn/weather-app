@@ -1,18 +1,21 @@
+import { useWeather } from "../contexts/Weather";
 import { useCountry } from "../hooks/useCountry";
 import Loader from "./Loader";
 
 function SearchModal() {
   const { results, isLoading } = useCountry();
-
+  const { countryName } = useWeather();
+  console.log(results?.length);
+  console.log(countryName);
   return (
     <div
       className={`${
         results?.length > 4 && !isLoading
           ? "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px] overflow-y-scroll  "
-          : "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px]   "
+          : "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px]  overflow-hidden "
       }`}
     >
-      {isLoading ? (
+      {isLoading || !results ? (
         <Loader />
       ) : (
         <div className="flex flex-col gap-1.5 py-2">
@@ -25,6 +28,7 @@ function SearchModal() {
               country_id,
               country_code,
               timezone,
+              admin1,
             } = s;
             return (
               <div
@@ -40,7 +44,9 @@ function SearchModal() {
                   <h2 className="font-DM_SANS text-[16px] font-medium leading-[120%]">
                     {name}
                   </h2>
-                  <p className="text-[10px]">{country}</p>
+                  <p className="text-[10px]">
+                    {country} <span>({admin1})</span>
+                  </p>
                 </div>
               </div>
             );

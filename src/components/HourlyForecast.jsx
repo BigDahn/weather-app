@@ -1,12 +1,10 @@
-import { useState } from "react";
 import Dropdown from "../ui/Dropdown";
 
 function HourlyForecast() {
-  const [isOpen, setIsOpen] = useState(true);
   return (
     <main className="w-[37%] bg-[#262540] rounded-2xl flex flex-col items-start px-5 py-4 ">
       <div className="flex justify-between w-full items-center">
-        <h3 className="font-DM_SANS text-white font-semibold text-[18px] leading-[120%] tracking-[-2%]">
+        <h3 className="font-DM_SANS text-white font-semibold text-[16px] leading-[120%] tracking-[-2%]">
           Hourly forecast
         </h3>
         <div className="relative">

@@ -1,11 +1,12 @@
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import Container from "./components/Container";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Weather } from "./contexts/Weather";
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 0,
+      staleTime: 5 * 1000,
     },
   },
 });
@@ -15,7 +16,9 @@ function App() {
     <div className="min-h-screen max-w-6xl mx-auto pt-[2rem] ">
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
-        <Container />
+        <Weather>
+          <Container />
+        </Weather>
       </QueryClientProvider>
     </div>
   );

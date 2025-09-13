@@ -8,14 +8,15 @@ import {
   InchesConverter,
   MphConverter,
 } from "../utils/calculator";
+import { FilterFunction } from "../utils/FilterFunction";
 
 function Country() {
   const { temp, Precipitation, windSpeed } = useWeather();
   const { current } = weatherData;
 
-  const currentTempName = temp.filter((s) => s.isChecked)[0].name;
-  const precipitationChanged = Precipitation.filter((s) => s.isChecked)[0].name;
-  const windSpeedChanged = windSpeed.filter((s) => s.isChecked)[0].name;
+  const currentTempName = FilterFunction(temp);
+  const precipitationChanged = FilterFunction(Precipitation);
+  const windSpeedChanged = FilterFunction(windSpeed);
 
   const {
     temperature_2m,

@@ -30,3 +30,10 @@ export const precipitation = [
     isChecked: false,
   },
 ];
+
+// export const days = [
+//   {
+//     name: "Monday",
+//     isChecked:false
+//   }
+// ]

@@ -5,8 +5,7 @@ import Loader from "./Loader";
 function SearchModal() {
   const { results, isLoading } = useCountry();
   const { countryName } = useWeather();
-  console.log(results?.length);
-  console.log(countryName);
+
   return (
     <div
       className={`${

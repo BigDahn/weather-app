@@ -4,7 +4,7 @@ import SearchBar from "./SearchBar";
 import WeatherContainer from "./WeatherContainer";
 
 function Body() {
-  const { current, daily } = weatherData;
+  const { current } = weatherData;
   const {
     time,
     is_day,
@@ -15,7 +15,7 @@ function Body() {
     wind_speed_10m,
   } = current;
   const s = format(time, "EEEE,MMM dd,yyyy");
-  console.log(new Array(daily));
+  // console.log(new Array(daily));
 
   return (
     <div className="flex flex-col gap-4 pb-3">

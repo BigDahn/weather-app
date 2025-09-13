@@ -1,8 +1,8 @@
 import { fetchWeatherApi } from "openmeteo";
 import { format } from "date-fns";
 const params = {
-  latitude: 6.4541,
-  longitude: 3.3947,
+  latitude: 6.6153,
+  longitude: 3.5069,
   daily: ["weather_code", "temperature_2m_max", "temperature_2m_min"],
   hourly: [
     "temperature_2m",
@@ -17,6 +17,8 @@ const params = {
     "precipitation",
     "weather_code",
     "wind_speed_10m",
+    "is_day",
+    "apparent_temperature",
   ],
 };
 const url = "https://api.open-meteo.com/v1/forecast";
@@ -48,6 +50,7 @@ const weatherData = {
     weather_code: current.variables(3).value(),
     wind_speed_10m: current.variables(4).value(),
     is_day: current.variables(5).value(),
+    apparent_temperature: current.variables(6).value(),
   },
   hourly: {
     time: [

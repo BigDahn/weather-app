@@ -1,6 +1,10 @@
 import DailyForeCast from "./DailyForeCast";
+import { weatherData } from "../services/getWeatherInfo";
 
 function Country() {
+  const { current } = weatherData;
+
+  const { temperature_2m } = current;
   return (
     <div className="w-[80%] h-full flex flex-col gap-[0.6rem] ">
       <main className=" grow flex flex-col gap-[1em]">
@@ -16,7 +20,7 @@ function Country() {
           <div className="flex items-center gap-2">
             <img src="/images/icon-sunny.webp" className="w-[120px]" />
             <h2 className="font-DM_SANS text-white font-semibold text-[86px] leading-[100%] tracking-[-2%] italic">
-              20°
+              {temperature_2m}°
             </h2>
           </div>
         </div>
@@ -27,7 +31,7 @@ function Country() {
               Feels Like
             </h5>
             <h2 className="font-DM_SANS text-[#FFFFFF] font-light text-[30px] leading-[100%]">
-              18°
+              {temperature_2m}°
             </h2>
           </div>
           <div className="w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-center px-4 gap-6">

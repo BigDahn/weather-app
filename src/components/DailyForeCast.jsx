@@ -1,6 +1,7 @@
 import { useWeather } from "../contexts/Weather";
 import { weatherData } from "../services/getWeatherInfo";
 import { FahrenheitConverter } from "../utils/calculator";
+import { getWeatherIcon } from "../utils/getWeatherIcon";
 
 function DailyForeCast() {
   const { temp } = useWeather();
@@ -9,7 +10,7 @@ function DailyForeCast() {
 
   const { daily } = weatherData;
 
-  const { time, temperature_2m_max, temperature_2m_min } = daily;
+  const { time, temperature_2m_max, temperature_2m_min, weather_code } = daily;
   return (
     <div className="flex gap-3">
       {time.map((s, i) => {
@@ -22,7 +23,8 @@ function DailyForeCast() {
               <h3 className="font-DM_SANS text-[18px] text-white font-medium leading-[120%]">
                 {s}
               </h3>
-              <img src="/images/icon-snow.webp" className="w-[60px]" />
+
+              <img src={getWeatherIcon(weather_code[i])} className="w-[60px]" />
             </div>
             <div className="flex justify-between pt-2">
               <h3 className="font-DM_SANS text-[16px] text-white font-medium leading-[120%]">

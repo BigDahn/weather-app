@@ -1,26 +1,48 @@
+import { format } from "date-fns";
+
 import DailyForeCast from "./DailyForeCast";
 import { weatherData } from "../services/getWeatherInfo";
+import { useWeather } from "../contexts/Weather";
+import {
+  FahrenheitConverter,
+  InchesConverter,
+  MphConverter,
+} from "../utils/calculator";
 
 function Country() {
+  const { temp, Precipitation, windSpeed } = useWeather();
   const { current } = weatherData;
 
-  const { temperature_2m } = current;
+  const currentTempName = temp.filter((s) => s.isChecked)[0].name;
+  const precipitationChanged = Precipitation.filter((s) => s.isChecked)[0].name;
+  const windSpeedChanged = windSpeed.filter((s) => s.isChecked)[0].name;
+
+  const {
+    temperature_2m,
+    precipitation,
+    wind_speed_10m,
+    relative_humidity_2m,
+    time,
+  } = current;
   return (
     <div className="w-[80%] h-full flex flex-col gap-[0.6rem] ">
       <main className=" grow flex flex-col gap-[1em]">
-        <div className="bg-[url(/images/bg-today-large.svg)] bg-cover bg-center  bg-no-repeat rounded-lg h-[62%] flex items-center pl-4 pr-5  justify-between">
+        <div className="bg-[url(/images/bg-today-large.svg)] bg-cover bg-center  bg-no-repeat rounded-lg h-[62%] flex items-center px-4  justify-between">
           <div className="flex flex-col gap-2">
             <h3 className="font-DM_SANS text-white text-[26px] font-bold leading-[120%]">
               Berlin, Germany
             </h3>
-            <h4 className="font-DM_SANS text-white text-[15px] font-medium leading-[120%]">
-              Tuesday, Aug 5, 2025
+            <h4 className="font-DM_SANS text-white text-[16px] font-medium leading-[120%]">
+              {format(time, "EEEE, MMM dd, yyyy")}
             </h4>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between w-[294px]">
             <img src="/images/icon-sunny.webp" className="w-[120px]" />
             <h2 className="font-DM_SANS text-white font-semibold text-[86px] leading-[100%] tracking-[-2%] italic">
-              {temperature_2m}°
+              {currentTempName === "Celsius (°C)"
+                ? Math.round(temperature_2m)
+                : Math.round(FahrenheitConverter(temperature_2m))}
+              °
             </h2>
           </div>
         </div>
@@ -31,7 +53,10 @@ function Country() {
               Feels Like
             </h5>
             <h2 className="font-DM_SANS text-[#FFFFFF] font-light text-[30px] leading-[100%]">
-              {temperature_2m}°
+              {currentTempName === "Celsius (°C)"
+                ? Math.round(temperature_2m)
+                : Math.round(FahrenheitConverter(temperature_2m))}
+              °
             </h2>
           </div>
           <div className="w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-center px-4 gap-6">
@@ -39,7 +64,7 @@ function Country() {
               Humidity
             </h5>
             <h2 className="font-DM_SANS text-[#FFFFFF] font-light text-[30px] leading-[100%]">
-              46%
+              {relative_humidity_2m}%
             </h2>
           </div>
           <div className="w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-center px-4 gap-6">
@@ -47,7 +72,10 @@ function Country() {
               Wind
             </h5>
             <h2 className="font-DM_SANS text-[#FFFFFF] font-light text-[30px] leading-[100%]">
-              14 km/h
+              {windSpeedChanged === "km/h"
+                ? Math.round(wind_speed_10m)
+                : MphConverter(wind_speed_10m)}
+              {windSpeedChanged === "km/h" ? "km/h" : "mph"}
             </h2>
           </div>
           <div className="w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-center px-4 gap-6">
@@ -55,7 +83,10 @@ function Country() {
               Precipitation
             </h5>
             <h2 className="font-DM_SANS text-[#FFFFFF] font-light text-[30px] leading-[100%]">
-              0 mm
+              {precipitationChanged === "Millimeters (mm)"
+                ? Math.round(precipitation)
+                : InchesConverter(precipitation)}
+              {precipitationChanged === "Millimeters (mm)" ? "mm" : "in"}
             </h2>
           </div>
         </main>

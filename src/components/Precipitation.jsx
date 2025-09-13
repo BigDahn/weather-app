@@ -5,7 +5,7 @@ export default function Precipitation() {
   return (
     <div className="flex flex-col gap-2 pb-1.5">
       <h2 className="font-DM_SANS text-[13px] font-medium leading-[120%] text-[#ACACB7]">
-        Wind Speed
+        Precipitation
       </h2>
       {Precipitation.map((data, index) => {
         return (

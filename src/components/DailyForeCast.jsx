@@ -3,11 +3,12 @@ import { format } from "date-fns";
 import { weatherData } from "../services/getWeatherInfo";
 import { FahrenheitConverter } from "../utils/calculator";
 import { getWeatherIcon } from "../utils/getWeatherIcon";
+import { FilterFunction } from "../utils/FilterFunction";
 
 function DailyForeCast() {
   const { temp } = useWeather();
 
-  const currentTempName = temp.filter((s) => s.isChecked)[0].name;
+  const currentTempName = FilterFunction(temp);
 
   const { daily } = weatherData;
 

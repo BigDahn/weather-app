@@ -10,6 +10,7 @@ const params = {
     "precipitation_probability",
     "weather_code",
     "wind_speed_10m",
+    "is_day",
   ],
   current: [
     "temperature_2m",
@@ -69,6 +70,7 @@ const weatherData = {
     // precipitation_probability: hourly.variables(2).valuesArray(),
     weather_code: hourly.variables(3).valuesArray(),
     // wind_speed_10m: hourly.variables(4).valuesArray(),
+    is_day: hourly.variables(5).valuesArray(),
   },
   daily: {
     time: [

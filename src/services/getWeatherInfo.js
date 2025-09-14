@@ -1,5 +1,5 @@
 import { fetchWeatherApi } from "openmeteo";
-import { format } from "date-fns";
+
 const params = {
   latitude: 6.6153,
   longitude: 3.5069,
@@ -65,24 +65,22 @@ const weatherData = {
         )
     ),
     temperature_2m: hourly.variables(0).valuesArray(),
-    relative_humidity_2m: hourly.variables(1).valuesArray(),
-    precipitation_probability: hourly.variables(2).valuesArray(),
+    // relative_humidity_2m: hourly.variables(1).valuesArray(),
+    // precipitation_probability: hourly.variables(2).valuesArray(),
     weather_code: hourly.variables(3).valuesArray(),
-    wind_speed_10m: hourly.variables(4).valuesArray(),
+    // wind_speed_10m: hourly.variables(4).valuesArray(),
   },
   daily: {
     time: [
       ...Array(
         (Number(daily.timeEnd()) - Number(daily.time())) / daily.interval()
       ),
-    ].map((_, i) =>
-      format(
+    ].map(
+      (_, i) =>
         new Date(
           (Number(daily.time()) + i * daily.interval() + utcOffsetSeconds) *
             1000
-        ),
-        "EE"
-      )
+        )
     ),
     weather_code: daily.variables(0).valuesArray(),
     temperature_2m_max: daily.variables(1).valuesArray(),

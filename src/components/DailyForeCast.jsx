@@ -1,4 +1,5 @@
 import { useWeather } from "../contexts/Weather";
+import { format } from "date-fns";
 import { weatherData } from "../services/getWeatherInfo";
 import { FahrenheitConverter } from "../utils/calculator";
 import { getWeatherIcon } from "../utils/getWeatherIcon";
@@ -21,7 +22,7 @@ function DailyForeCast() {
           >
             <div className="flex flex-col items-center">
               <h3 className="font-DM_SANS text-[18px] text-white font-medium leading-[120%]">
-                {s}
+                {format(s, "EEE")}
               </h3>
 
               <img src={getWeatherIcon(weather_code[i])} className="w-[60px]" />

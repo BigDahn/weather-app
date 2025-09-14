@@ -9,6 +9,7 @@ const initialState = {
   temp: temperature,
   windSpeed: wind,
   Precipitation: precipitation,
+  currentDay: new Date(),
 };
 
 function reducer(state, action) {
@@ -163,14 +164,18 @@ function reducer(state, action) {
               }),
       };
     }
+    case "change/Day": {
+      return {
+        ...state,
+        currentDay: action.payload,
+      };
+    }
   }
 }
 
 function Weather({ children }) {
-  const [{ name, temp, windSpeed, Precipitation, unit }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ name, temp, windSpeed, Precipitation, unit, currentDay }, dispatch] =
+    useReducer(reducer, initialState);
   const [countryName, setCountryName] = useState("");
   return (
     <WeatherContext.Provider
@@ -182,6 +187,7 @@ function Weather({ children }) {
         temp,
         Precipitation,
         unit,
+        currentDay,
         dispatch,
       }}
     >

@@ -24,7 +24,9 @@ function Country() {
     wind_speed_10m,
     relative_humidity_2m,
     time,
+    apparent_temperature,
   } = current;
+
   return (
     <div className="w-[80%] h-full flex flex-col gap-[0.6rem] ">
       <main className=" grow flex flex-col gap-[1em]">
@@ -55,8 +57,8 @@ function Country() {
             </h5>
             <h2 className="font-DM_SANS text-[#FFFFFF] font-light text-[30px] leading-[100%]">
               {currentTempName === "Celsius (°C)"
-                ? Math.round(temperature_2m)
-                : Math.round(FahrenheitConverter(temperature_2m))}
+                ? Math.round(apparent_temperature)
+                : Math.round(FahrenheitConverter(apparent_temperature))}
               °
             </h2>
           </div>

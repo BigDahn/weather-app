@@ -12,13 +12,6 @@ function HourlyForecast() {
     end: new Date(endDate),
   });
 
-  // function handleChange(day) {
-  //   const d = format(day, "eee MMM dd yyyy");
-  //   // console.log(day, currentDay);
-  //   console.log(d);
-  // }
-  // px-4 py-4
-  // console.log(result);
   return (
     <main className="w-[37%] bg-[#262540] rounded-2xl flex flex-col items-start gap-2 overflow-hidden  pt-4  pb-2 ">
       <div className="flex justify-between w-full items-center px-4 ">
@@ -66,7 +59,7 @@ function HourlyForecast() {
           </Dropdown>
         </div>
       </div>
-      <div className="w-full overflow-y-scroll ">
+      <div className="w-full overflow-y-scroll cursor-pointer ">
         <div className="w-[99%] px-3 ">
           <Hours />
         </div>

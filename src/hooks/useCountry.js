@@ -3,11 +3,11 @@ import { getCountry } from "../services/getCountry";
 import { useWeather } from "../contexts/Weather";
 
 export function useCountry() {
-  const { countryName } = useWeather();
+  const { location } = useWeather();
   // console.log(countryName);
   const { data: { results } = {}, isLoading = true } = useQuery({
-    queryKey: ["country", countryName],
-    queryFn: () => getCountry(countryName),
+    queryKey: ["country", location],
+    queryFn: () => getCountry(location),
   });
 
   return { results, isLoading };

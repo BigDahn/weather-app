@@ -9,6 +9,7 @@ import {
   MphConverter,
 } from "../utils/calculator";
 import { FilterFunction } from "../utils/FilterFunction";
+import { getWeatherIcon } from "../utils/getWeatherIcon";
 
 function Country() {
   const { temp, Precipitation, windSpeed } = useWeather();
@@ -25,6 +26,8 @@ function Country() {
     relative_humidity_2m,
     time,
     apparent_temperature,
+    is_day,
+    weather_code,
   } = current;
 
   return (
@@ -40,7 +43,10 @@ function Country() {
             </h4>
           </div>
           <div className="flex items-center justify-between w-[294px]">
-            <img src="/images/icon-sunny.webp" className="w-[120px]" />
+            <img
+              src={getWeatherIcon(weather_code, is_day)}
+              className={`${is_day ? "w-[110px]" : "w-[80px]"}`}
+            />
             <h2 className="font-DM_SANS text-white font-semibold text-[86px] leading-[100%] tracking-[-2%] italic">
               {currentTempName === "Celsius (°C)"
                 ? Math.round(temperature_2m)

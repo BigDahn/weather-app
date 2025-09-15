@@ -4,7 +4,7 @@ import SearchModal from "./SearchModal";
 import { useWeather } from "../contexts/Weather";
 
 function Input() {
-  const { countryName, setCountryName } = useWeather();
+  const { countryName, dispatch, location, setCountryName } = useWeather();
 
   return (
     <main>
@@ -21,7 +21,10 @@ function Input() {
             className="absolute ml-2 w-[20px]"
           />
         </div>
-        <Button />
+        <Button
+          onClick={() => dispatch({ type: "input/name", payload: countryName })}
+          disabled={!countryName}
+        />
       </div>
       {countryName && (
         <div className="fixed mt-3">

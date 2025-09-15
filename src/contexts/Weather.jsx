@@ -4,6 +4,7 @@ import { precipitation, temperature, wind } from "../utils/data";
 const WeatherContext = createContext();
 
 const initialState = {
+  location: "",
   unitChange: true,
   unit: "Imperial",
   temp: temperature,
@@ -14,9 +15,10 @@ const initialState = {
 
 function reducer(state, action) {
   switch (action.type) {
-    case "input": {
+    case "input/name": {
       return {
         ...state,
+        location: action.payload,
       };
     }
     case "temp/change": {
@@ -174,17 +176,19 @@ function reducer(state, action) {
 }
 
 function Weather({ children }) {
-  const [{ name, temp, windSpeed, Precipitation, unit, currentDay }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { location, temp, windSpeed, Precipitation, unit, currentDay },
+    dispatch,
+  ] = useReducer(reducer, initialState);
   const [countryName, setCountryName] = useState("");
   return (
     <WeatherContext.Provider
       value={{
-        name,
         countryName,
         setCountryName,
         windSpeed,
         temp,
+        location,
         Precipitation,
         unit,
         currentDay,

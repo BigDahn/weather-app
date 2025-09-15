@@ -30,14 +30,17 @@ function Hours() {
   return (
     <div className="flex flex-col gap-2">
       {hours.map((day, index) => {
-        const { time, weather, temperature } = day;
+        const { time, weather, temperature, isDay } = day;
         return (
           <main
             className="flex items-center justify-between  bg-[#302F4A] py-2 px-2 rounded-md ring-1 ring-[#3C3B5E]"
             key={index}
           >
-            <div className="flex gap-2 items-center  min-w-[90%]">
-              <img src={getWeatherIcon(weather)} className="w-[40px]" />
+            <div className="flex gap-2.5 items-center  min-w-[90%]">
+              <img
+                src={getWeatherIcon(weather, isDay)}
+                className={isDay ? "w-[12%]" : "w-[12%]"}
+              />
               <h3 className="font-DM_SANS font-medium text-[16px] text-[#ffffff] leading-normal">
                 {format(time, "h aa")}
               </h3>

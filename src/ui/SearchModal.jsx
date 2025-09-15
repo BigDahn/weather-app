@@ -4,7 +4,7 @@ import Loader from "./Loader";
 
 function SearchModal() {
   const { results, isLoading } = useCountry();
-  const { countryName } = useWeather();
+  const { location } = useWeather();
 
   return (
     <div
@@ -30,16 +30,25 @@ function SearchModal() {
               admin1,
             } = s;
             return (
-              <div
-                key={country_id}
+              <button
+                key={[latitude, longitude]}
                 className="flex items-center gap-x-4 text-white py-1 hover:bg-[#302F4A] rounded-md px-3 cursor-pointer"
+                onClick={() =>
+                  console.log({
+                    name: name,
+                    latitude: latitude,
+                    longitude: longitude,
+                    country: country,
+                    timezone: timezone,
+                  })
+                }
               >
                 <img
                   src={`https://flagsapi.com/${country_code}/flat/64.png`}
                   className="w-[20px]"
                 />
 
-                <div>
+                <div className="flex flex-col items-start">
                   <h2 className="font-DM_SANS text-[16px] font-medium leading-[120%]">
                     {name}
                   </h2>
@@ -47,7 +56,7 @@ function SearchModal() {
                     {country} <span>({admin1})</span>
                   </p>
                 </div>
-              </div>
+              </button>
             );
           })}
         </div>

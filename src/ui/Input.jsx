@@ -8,7 +8,7 @@ function Input() {
 
   return (
     <main>
-      <div className="w-[656px] h-[46px] flex justify-between">
+      <div className="w-[656px] h-[46px] flex justify-between ">
         <div className="relative h-full flex items-center  ">
           <input
             type="text"
@@ -27,7 +27,10 @@ function Input() {
         />
       </div>
       {countryName && (
-        <div className="fixed mt-3">
+        <div
+          className="
+        fixed z-[9999] mt-3"
+        >
           <SearchModal />
         </div>
       )}

@@ -4,14 +4,27 @@ import Loader from "./Loader";
 
 function SearchModal() {
   const { results, isLoading } = useCountry();
-  const { location } = useWeather();
+  const { dispatch } = useWeather();
+
+  function submitSearch({ name, latitude, longitude, country, timezone }) {
+    dispatch({
+      type: "search/location",
+      payload: {
+        name: name,
+        latitude: latitude,
+        longitude: longitude,
+        country: country,
+        timezone: timezone,
+      },
+    });
+  }
 
   return (
     <div
       className={`${
         results?.length > 4 && !isLoading
-          ? "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px] overflow-y-scroll  "
-          : "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px]  overflow-hidden "
+          ? "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px] overflow-y-scroll z-50"
+          : "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px]  overflow-hidden shadow-2xl z-50 "
       }`}
     >
       {isLoading || !results ? (
@@ -24,7 +37,6 @@ function SearchModal() {
               longitude,
               name,
               country,
-              country_id,
               country_code,
               timezone,
               admin1,
@@ -34,13 +46,7 @@ function SearchModal() {
                 key={[latitude, longitude]}
                 className="flex items-center gap-x-4 text-white py-1 hover:bg-[#302F4A] rounded-md px-3 cursor-pointer"
                 onClick={() =>
-                  console.log({
-                    name: name,
-                    latitude: latitude,
-                    longitude: longitude,
-                    country: country,
-                    timezone: timezone,
-                  })
+                  submitSearch({ name, latitude, longitude, country, timezone })
                 }
               >
                 <img

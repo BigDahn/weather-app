@@ -10,7 +10,9 @@ export function getWeatherIcon(value, isDay) {
         : "/images/icon-overcast-moon.webp";
     }
     case 3: {
-      return "/images/icon-overcast.webp";
+      return isDay
+        ? "/images/icon-overcast.webp"
+        : "/images/icon-overcast-moon.webp";
     }
     case 45:
     case 48: {

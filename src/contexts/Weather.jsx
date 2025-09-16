@@ -4,7 +4,14 @@ import { precipitation, temperature, wind } from "../utils/data";
 const WeatherContext = createContext();
 
 const initialState = {
-  location: "",
+  location: {
+    country: "",
+    longitude: "",
+    latitude: "",
+    name: "",
+    timezone: "",
+  },
+  searchValue: "",
   unitChange: true,
   unit: "Imperial",
   temp: temperature,
@@ -18,7 +25,7 @@ function reducer(state, action) {
     case "input/name": {
       return {
         ...state,
-        location: action.payload,
+        searchValue: action.payload,
       };
     }
     case "temp/change": {
@@ -172,12 +179,18 @@ function reducer(state, action) {
         currentDay: action.payload,
       };
     }
+    case "search/location": {
+      return {
+        ...state,
+        location: action.payload,
+      };
+    }
   }
 }
 
 function Weather({ children }) {
   const [
-    { location, temp, windSpeed, Precipitation, unit, currentDay },
+    { location, searchValue, temp, windSpeed, Precipitation, unit, currentDay },
     dispatch,
   ] = useReducer(reducer, initialState);
   const [countryName, setCountryName] = useState("");
@@ -192,6 +205,7 @@ function Weather({ children }) {
         Precipitation,
         unit,
         currentDay,
+        searchValue,
         dispatch,
       }}
     >

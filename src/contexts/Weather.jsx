@@ -9,7 +9,6 @@ const initialState = {
     longitude: "",
     latitude: "",
     name: "",
-    timezone: "",
   },
   searchValue: "",
   unitChange: true,
@@ -17,7 +16,7 @@ const initialState = {
   temp: temperature,
   windSpeed: wind,
   Precipitation: precipitation,
-  currentDay: new Date(),
+  currentDay: null,
 };
 
 function reducer(state, action) {

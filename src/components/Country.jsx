@@ -18,7 +18,7 @@ function Country() {
 
   const { current = {} } = data;
 
-  console.log(data, isLoading);
+  // console.log(data, isLoading);
 
   const currentTempName = FilterFunction(temp);
   const precipitationChanged = FilterFunction(Precipitation);
@@ -35,11 +35,13 @@ function Country() {
     weather_code,
   } = current;
 
+  // console.log(current);
+
   return (
-    <div className="w-[80%] h-full flex flex-col gap-[0.6rem] ">
-      <main className=" grow flex flex-col gap-[1em] ">
+    <div className="w-[80%] h-full flex flex-col gap-[0.6rem] px-0.5">
+      <main className=" flex grow flex-col gap-y-3  ">
         {isLoading || Object.keys(current).length < 1 ? (
-          <div className="bg-[#262540] rounded-lg h-[62%] flex flex-col items-center px-4 justify-center shadow-md ring-1 ring-[#3C3B5E] ">
+          <div className="bg-[#262540] rounded-lg  h-[62%] flex flex-col items-center px-4 justify-center shadow-md ring-1 ring-[#3C3B5E] ">
             <div>
               <div className="flex gap-x-2 space-y-2 relative z-10">
                 <h3 className="h-[12px] w-[12px] rounded-full bg-white"></h3>

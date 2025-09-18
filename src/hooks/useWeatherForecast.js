@@ -5,7 +5,7 @@ import { useWeather } from "../contexts/Weather";
 export function useWeatherForecast() {
   const { location } = useWeather();
 
-  // console.log(location);
+  //console.log(location);
   const {
     data = {},
     isLoading = true,

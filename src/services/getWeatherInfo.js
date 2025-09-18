@@ -2,7 +2,7 @@ import { fetchWeatherApi } from "openmeteo";
 
 export async function getWeatherInfo(location) {
   // console.log(location);
-  const { latitude, longitude, timezone } = location;
+  const { latitude, longitude } = location;
 
   const params = {
     latitude: latitude,
@@ -25,7 +25,7 @@ export async function getWeatherInfo(location) {
       "is_day",
       "apparent_temperature",
     ],
-    timezone: timezone,
+    timezone: "auto",
   };
   const url = "https://api.open-meteo.com/v1/forecast";
 
@@ -36,6 +36,7 @@ export async function getWeatherInfo(location) {
     const current = response.current();
     const hourly = response.hourly();
     const daily = response.daily();
+    const timezoneAbbreviation = response.timezoneAbbreviation();
     const weatherData = {
       current: {
         time: new Date((Number(current.time()) + utcOffsetSeconds) * 1000),

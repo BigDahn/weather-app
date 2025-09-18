@@ -15,6 +15,9 @@ function DailyForeCast() {
   const { daily = {} } = data;
   const currentTempName = FilterFunction(temp);
 
+  // // console.log(format("2025-09-18T08:15", "Pp"));
+  // console.log(format("2025-09-18T18:30", "Pp"));
+
   const { time, temperature_2m_max, temperature_2m_min, weather_code } = daily;
   return (
     <div className="flex gap-3">
@@ -39,7 +42,7 @@ function DailyForeCast() {
                   </h3>
 
                   <img
-                    src={getWeatherIcon(weather_code[i])}
+                    src={getWeatherIcon(weather_code[i], 1)}
                     className="w-[60px]"
                   />
                 </div>

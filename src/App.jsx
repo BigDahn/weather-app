@@ -13,7 +13,7 @@ const queryClient = new QueryClient({
 
 function App() {
   return (
-    <div className="min-h-screen max-w-6xl mx-auto pt-[2rem] ">
+    <div className="min-h-screen  max-w-6xl mx-auto pt-[1rem]  ">
       <QueryClientProvider client={queryClient}>
         <ReactQueryDevtools initialIsOpen={false} />
         <Weather>

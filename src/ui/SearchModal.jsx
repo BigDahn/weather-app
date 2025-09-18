@@ -20,54 +20,64 @@ function SearchModal() {
   }
 
   return (
-    <div
-      className={`${
-        results?.length > 4 && !isLoading
-          ? "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px] overflow-y-scroll z-50"
-          : "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px]  overflow-hidden shadow-2xl z-50 "
-      }`}
-    >
-      {isLoading || !results ? (
-        <Loader />
-      ) : (
-        <div className="flex flex-col gap-1.5 py-2">
-          {results?.map((s) => {
-            const {
-              latitude,
-              longitude,
-              name,
-              country,
-              country_code,
-              timezone,
-              admin1,
-            } = s;
-            return (
-              <button
-                key={[latitude, longitude]}
-                className="flex items-center gap-x-4 text-white py-1 hover:bg-[#302F4A] rounded-md px-3 cursor-pointer"
-                onClick={() =>
-                  submitSearch({ name, latitude, longitude, country, timezone })
-                }
-              >
-                <img
-                  src={`https://flagsapi.com/${country_code}/flat/64.png`}
-                  className="w-[20px]"
-                />
+    <>
+      {results && (
+        <div
+          className={`${
+            results?.length > 4 && !isLoading
+              ? "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px] overflow-y-scroll z-50 ring-1 ring-[#3C3B5E] shadow-2xl"
+              : "w-[526px] bg-[#262540] rounded-md px-2 max-h-[200px]  overflow-hidden shadow-2xl z-50 ring-1 ring-[#3C3B5E]"
+          }`}
+        >
+          {isLoading || !results ? (
+            <Loader />
+          ) : (
+            <div className="flex flex-col gap-1.5 py-2">
+              {results?.map((s) => {
+                const {
+                  latitude,
+                  longitude,
+                  name,
+                  country,
+                  country_code,
+                  timezone,
+                  admin1,
+                } = s;
+                return (
+                  <button
+                    key={[latitude, longitude]}
+                    className="flex items-center gap-x-4 text-white py-1 hover:bg-[#302F4A] rounded-md px-3 cursor-pointer"
+                    onClick={() =>
+                      submitSearch({
+                        name,
+                        latitude,
+                        longitude,
+                        country,
+                        timezone,
+                      })
+                    }
+                  >
+                    <img
+                      src={`https://flagsapi.com/${country_code}/flat/64.png`}
+                      className="w-[20px]"
+                    />
 
-                <div className="flex flex-col items-start">
-                  <h2 className="font-DM_SANS text-[16px] font-medium leading-[120%]">
-                    {name}
-                  </h2>
-                  <p className="text-[10px]">
-                    {country} <span>({admin1})</span>
-                  </p>
-                </div>
-              </button>
-            );
-          })}
+                    <div className="flex flex-col items-start">
+                      <h2 className="font-DM_SANS text-[16px] font-medium leading-[120%]">
+                        {name}
+                      </h2>
+                      <p className="text-[10px]">
+                        {country} <span>({admin1})</span>
+                      </p>
+                    </div>
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
-    </div>
+    </>
   );
 }
 

@@ -11,6 +11,7 @@ const initialState = {
     name: "",
   },
   searchValue: "",
+  searchModal: null,
   unitChange: true,
   unit: "Imperial",
   temp: temperature,
@@ -25,6 +26,7 @@ function reducer(state, action) {
       return {
         ...state,
         searchValue: action.payload,
+        searchModal: true,
       };
     }
     case "temp/change": {
@@ -182,6 +184,7 @@ function reducer(state, action) {
       return {
         ...state,
         location: action.payload,
+        searchModal: false,
       };
     }
   }
@@ -189,22 +192,38 @@ function reducer(state, action) {
 
 function Weather({ children }) {
   const [
-    { location, searchValue, temp, windSpeed, Precipitation, unit, currentDay },
+    {
+      location,
+      searchValue,
+      searchModal,
+      temp,
+      windSpeed,
+      Precipitation,
+      unit,
+      currentDay,
+    },
     dispatch,
   ] = useReducer(reducer, initialState);
-  const [countryName, setCountryName] = useState("");
+  const [countryName, setCountryName] = useState(searchValue);
+  const [data, setData] = useState([]);
+  const [enabled, setEnabled] = useState(false);
   return (
     <WeatherContext.Provider
       value={{
         countryName,
         setCountryName,
         windSpeed,
+        searchModal,
         temp,
         location,
         Precipitation,
         unit,
         currentDay,
         searchValue,
+        data,
+        setData,
+        enabled,
+        setEnabled,
         dispatch,
       }}
     >

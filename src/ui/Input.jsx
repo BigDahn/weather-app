@@ -2,9 +2,17 @@ import React from "react";
 import Button from "./Button";
 import SearchModal from "./SearchModal";
 import { useWeather } from "../contexts/Weather";
+import { useCountry } from "../hooks/useCountry";
 
 function Input() {
-  const { countryName, dispatch, location, setCountryName } = useWeather();
+  const { countryName, dispatch, setCountryName, searchModal, setEnabled } =
+    useWeather();
+
+  const searchBtn = (countryName) => {
+    dispatch({ type: "input/name", payload: countryName });
+    // refetch();
+    setEnabled(true);
+  };
 
   return (
     <main>
@@ -22,11 +30,11 @@ function Input() {
           />
         </div>
         <Button
-          onClick={() => dispatch({ type: "input/name", payload: countryName })}
+          onClick={() => searchBtn(countryName)}
           disabled={!countryName}
         />
       </div>
-      {countryName && (
+      {searchModal && (
         <div
           className="
         fixed z-[9999] mt-3"

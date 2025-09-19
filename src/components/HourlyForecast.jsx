@@ -19,7 +19,7 @@ function HourlyForecast() {
   const checkDay = currentDay ?? current.time;
 
   return (
-    <main className="w-[37%] bg-[#262540] h-full rounded-lg flex flex-col items-start gap-2 overflow-hidden  pt-4  pb-2 ">
+    <main className="lg:w-[37%] bg-[#262540] h-[600px] lg:h-full rounded-lg flex flex-col items-start gap-2 overflow-hidden  pt-4  pb-2 ">
       <div className="flex justify-between w-full items-center px-4 ">
         <h3 className="font-DM_SANS text-white font-semibold text-[16px] leading-[120%] tracking-[-2%]">
           Hourly forecast
@@ -30,9 +30,10 @@ function HourlyForecast() {
               open="days"
               style={
                 current.time
-                  ? "font-DM_SANS text-[14px] font-medium text-white flex items-center  bg-[#3C3B5E] w-[120px] justify-between px-2 py-1.5 rounded-md cursor-pointer"
-                  : "font-DM_SANS text-[14px] font-medium text-white flex items-center  bg-[#3C3B5E] w-[60px] justify-between px-2 py-3 rounded-md cursor-pointer"
+                  ? "font-DM_SANS text-[14px] font-medium text-white flex items-center  bg-[#3C3B5E] w-[120px] justify-between px-2 py-1.5 rounded-md cursor-pointer "
+                  : "font-DM_SANS text-[14px] font-medium text-white flex items-center bg-[#3C3B5E] w-[60px] justify-between px-2 py-3 rounded-md cursor-pointer  disabled:cursor-not-allowed "
               }
+              disabled={!current.time}
             >
               <h2 className="max-w-[90px] text-left">
                 {current.time ? (
@@ -46,9 +47,8 @@ function HourlyForecast() {
             <Dropdown.List
               open="days"
               style={
-                location.name
-                  ? "fixed w-[214px] bg-[#262540] rounded-md ring-1 ring-[#3C3B5E] mt-2 ml-[-7rem] shadow-lg"
-                  : "fixed w-[200px] bg-[#262540] rounded-md ring-1 ring-[#3C3B5E] mt-2 ml-[-9rem] shadow-lg hidden"
+                location.name &&
+                "absolute z-999 w-[214px] bg-[#262540] rounded-md ring-1 ring-[#3C3B5E] mt-2 ml-[-7rem] lg:ml-[-7rem] shadow-lg"
               }
             >
               {location.name && (

@@ -6,7 +6,7 @@ function Main() {
     <main>
       <div className="flex  flex-col items-center gap-4">
         <Header />
-        <section className="w-full">
+        <section className="w-full ">
           <Body />
         </section>
       </div>

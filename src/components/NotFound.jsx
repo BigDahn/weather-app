@@ -1,5 +1,3 @@
-import React from "react";
-
 function NotFound() {
   return (
     <div className="flex w-full pt-4 justify-center h-[550px] items-start">

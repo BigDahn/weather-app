@@ -3,7 +3,7 @@ import WeatherContainer from "./WeatherContainer";
 
 function Body() {
   return (
-    <div className="flex flex-col gap-4  w-full">
+    <div className="flex flex-col gap-4   w-full ">
       <SearchBar />
       <WeatherContainer />
     </div>

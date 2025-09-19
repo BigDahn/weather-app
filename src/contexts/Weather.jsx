@@ -187,6 +187,13 @@ function reducer(state, action) {
         searchModal: false,
       };
     }
+    case "clear/search": {
+      return {
+        ...state,
+        searchValue: "",
+        searchModal: false,
+      };
+    }
   }
 }
 
@@ -207,6 +214,7 @@ function Weather({ children }) {
   const [countryName, setCountryName] = useState(searchValue);
   const [data, setData] = useState([]);
   const [enabled, setEnabled] = useState(false);
+  const [enableLocationSearch, setEnableLocationSearch] = useState(false);
   return (
     <WeatherContext.Provider
       value={{
@@ -224,6 +232,8 @@ function Weather({ children }) {
         setData,
         enabled,
         setEnabled,
+        enableLocationSearch,
+        setEnableLocationSearch,
         dispatch,
       }}
     >

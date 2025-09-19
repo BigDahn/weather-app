@@ -17,8 +17,8 @@ export default function Precipitation() {
             <h3
               className={`${
                 data.isChecked
-                  ? "font-DM_SANS text-[14px] text-white font-medium leading-[120%] bg-[#302F4A] py-2 px-2 rounded-sm flex justify-between items-center "
-                  : "font-DM_SANS text-[14px] text-white font-medium leading-[120%]  py-2 px-2 rounded-sm flex justify-between items-center "
+                  ? "font-DM_SANS text-[14px] text-white font-medium leading-[120%] bg-[#302F4A] py-2 px-2 rounded-sm flex justify-between items-center w-full"
+                  : "font-DM_SANS text-[14px] text-white font-medium leading-[120%]  py-2 px-2 rounded-sm flex justify-between items-center w-full"
               }`}
             >
               {data.name}

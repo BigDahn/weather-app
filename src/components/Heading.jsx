@@ -3,7 +3,7 @@ import Units from "./Units";
 
 function Heading() {
   return (
-    <header className="h-[43px] flex justify-between items-center ">
+    <header className="flex justify-between items-center ">
       <Logo />
       <Units />
     </header>

@@ -3,19 +3,13 @@ import { getCountry } from "../services/getCountry";
 import { useWeather } from "../contexts/Weather";
 
 export function useCountry() {
-  const { searchValue, enabled, countryName, location } = useWeather();
-  // console.log(location.name);
-  const {
-    data: { results } = {},
-    isLoading = true,
-    isFetched,
-    status,
-    isFetching,
-  } = useQuery({
+  const { searchValue, enabled } = useWeather();
+
+  const { data: { results } = {}, isLoading = true } = useQuery({
     queryKey: ["country", searchValue],
     queryFn: () => getCountry(searchValue),
     enabled: enabled,
   });
 
-  return { results, isLoading, isFetched, isFetching, status };
+  return { results, isLoading };
 }

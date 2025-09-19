@@ -15,7 +15,7 @@ function Dropdown({ children }) {
   );
 }
 
-function Open({ open: openDropMenu, children, style }) {
+function Open({ open: openDropMenu, children, style, disabled }) {
   const { openName, open, close } = useContext(DropDownContext);
 
   function handleClick() {
@@ -23,7 +23,7 @@ function Open({ open: openDropMenu, children, style }) {
   }
 
   return (
-    <button className={style} onClick={handleClick}>
+    <button className={style} onClick={handleClick} disabled={disabled}>
       {children}
       <img src="/images/icon-dropdown.svg" className="rotate-0" />
     </button>
@@ -32,7 +32,7 @@ function Open({ open: openDropMenu, children, style }) {
 
 function List({ children, open: openDropMenu, style }) {
   const { openName } = useContext(DropDownContext);
-
+  console.log(openDropMenu);
   if (openName !== openDropMenu) return null;
   return <main className={style}>{children}</main>;
 }

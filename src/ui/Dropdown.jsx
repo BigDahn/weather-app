@@ -32,7 +32,7 @@ function Open({ open: openDropMenu, children, style, disabled }) {
 
 function List({ children, open: openDropMenu, style }) {
   const { openName } = useContext(DropDownContext);
-  console.log(openDropMenu);
+
   if (openName !== openDropMenu) return null;
   return <main className={style}>{children}</main>;
 }

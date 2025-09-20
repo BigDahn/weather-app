@@ -11,7 +11,6 @@ const initialState = {
     name: "",
   },
   searchValue: "",
-  searchModal: null,
   unitChange: true,
   unit: "Imperial",
   temp: temperature,
@@ -26,7 +25,6 @@ function reducer(state, action) {
       return {
         ...state,
         searchValue: action.payload,
-        searchModal: true,
       };
     }
     case "temp/change": {
@@ -191,7 +189,6 @@ function reducer(state, action) {
       return {
         ...state,
         searchValue: "",
-        searchModal: false,
       };
     }
   }
@@ -199,19 +196,11 @@ function reducer(state, action) {
 
 function Weather({ children }) {
   const [
-    {
-      location,
-      searchValue,
-      searchModal,
-      temp,
-      windSpeed,
-      Precipitation,
-      unit,
-      currentDay,
-    },
+    { location, searchValue, temp, windSpeed, Precipitation, unit, currentDay },
     dispatch,
   ] = useReducer(reducer, initialState);
   const [countryName, setCountryName] = useState(searchValue);
+  const [searchModal, setSearchModal] = useState(false);
   const [data, setData] = useState([]);
   const [enabled, setEnabled] = useState(false);
   const [enableLocationSearch, setEnableLocationSearch] = useState(false);
@@ -232,6 +221,7 @@ function Weather({ children }) {
         setData,
         enabled,
         setEnabled,
+        setSearchModal,
         enableLocationSearch,
         setEnableLocationSearch,
         dispatch,

@@ -12,24 +12,25 @@ function Input() {
     setCountryName,
     searchModal,
     setEnabled,
-    location,
+    setSearchModal,
   } = useWeather();
 
-  const { results } = useCountry();
+  const { isLoading } = useCountry();
 
   const searchBtn = (countryName) => {
     dispatch({ type: "input/name", payload: countryName });
     setEnabled(true);
+    setSearchModal(true);
   };
 
+  console.log(isLoading, searchModal);
   const clearBtn = () => {
     dispatch({ type: "clear/search" });
     setCountryName("");
   };
 
-  // h-[343px]
   return (
-    <main className="w-full lg:w-[656px]   ">
+    <main className="w-full lg:w-[656px]  ">
       <div className=" lg:w-[656px] w-full h-[112px]   md:h-[46px] flex flex-col justify-start md:gap-2 lg:gap-2  md:flex-row md:justify-between items-center ">
         <div className="relative  flex items-center w-full lg:w-[526px]  h-full  ">
           <input
@@ -61,10 +62,11 @@ function Input() {
           search
         </Button>
       </div>
-      {searchModal && results?.length >= 1 && (
+
+      {searchModal && (
         <div
           className="
-        fixed z-[9999] mt-3"
+        absolute lg:fixed z-[9999] mt-3 w-[92%] md:w-[76%] "
         >
           <SearchModal />
         </div>

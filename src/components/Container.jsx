@@ -5,7 +5,7 @@ import Main from "./Main";
 
 function Container() {
   const { error, isLoading, isPending, status } = useWeatherForecast();
-  console.log(error, isLoading, isPending, status);
+  // console.log(error, isLoading, isPending, status);
   return (
     <div className="flex flex-col justify-start gap-4  min-h-[98vh] ">
       <Heading />

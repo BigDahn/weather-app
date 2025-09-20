@@ -30,8 +30,8 @@ function Input() {
   // h-[343px]
   return (
     <main className="w-full lg:w-[656px]   ">
-      <div className=" lg:w-[656px] w-full h-[112px]   md:h-[46px] flex flex-col justify-start gap-2  md:flex-row md:justify-between items-center ">
-        <div className="relative  flex items-center w-full   ">
+      <div className=" lg:w-[656px] w-full h-[112px]   md:h-[46px] flex flex-col justify-start md:gap-2 lg:gap-2  md:flex-row md:justify-between items-center ">
+        <div className="relative  flex items-center w-full lg:w-[526px]  h-full  ">
           <input
             type="text"
             placeholder="Search for a place..."
@@ -56,7 +56,7 @@ function Input() {
         <Button
           onClick={() => searchBtn(countryName)}
           disabled={!countryName}
-          className="bg-[#4658D9] text-white md:w-[114px] rounded-lg text-[18px] font-medium font-DM_SANS leading-[120%] cursor-pointer disabled:bg-blue-900 disabled:cursor-not-allowed h-[56px] w-full md:h-[53px]"
+          className="bg-[#4658D9] text-white md:w-[114px] rounded-lg text-[18px] font-medium font-DM_SANS leading-[120%] cursor-pointer disabled:bg-blue-900 disabled:cursor-not-allowed h-[56px] lg:h-[46px] w-full md:h-[53px]"
         >
           search
         </Button>

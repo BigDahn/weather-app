@@ -38,8 +38,8 @@ function Country() {
   // console.log(current);
 
   return (
-    <div className="lg:w-[80%] h-full flex flex-col gap-[0.6rem] lg:px-0.5">
-      <main className=" flex grow flex-col gap-y-3  ">
+    <div className="lg:w-[80%] h-full flex flex-col gap-[0.6rem] md:gap-4 lg:px-0.5">
+      <main className=" flex grow flex-col gap-y-3 md:gap-y-5  ">
         {isLoading || Object.keys(current).length < 1 ? (
           <div className="bg-[#262540] rounded-lg h-[310px] lg:h-[62%] flex flex-col items-center px-4 justify-center shadow-md ring-1 ring-[#3C3B5E] ">
             <div>
@@ -55,12 +55,12 @@ function Country() {
             </h5>
           </div>
         ) : (
-          <div className="bg-[url(/images/bg-today-large.svg)] bg-cover bg-center  bg-no-repeat rounded-lg  h-[310px] lg:h-[62%] flex items-center px-4  justify-between ">
+          <div className="bg-[url(/images/bg-today-large.svg)] bg-cover bg-center  bg-no-repeat rounded-lg  h-[310px] lg:h-[62%] flex flex-col md:flex-row items-center px-4 justify-center md:justify-between gap-[2.3rem]">
             <div className="flex flex-col gap-2">
               <h3 className="font-DM_SANS text-white text-[26px] font-bold leading-[120%]">
                 {location.name}, {location.country}
               </h3>
-              <h4 className="font-DM_SANS text-white text-[16px] font-medium leading-[120%]">
+              <h4 className="font-DM_SANS text-white text-[16px] font-medium leading-[120%] text-center lg:text-left">
                 {format(time, "EEEE, MMM dd, yyyy")}
               </h4>
             </div>
@@ -78,8 +78,8 @@ function Country() {
             </div>
           </div>
         )}
-        <main className=" grid grid-cols-2 gap-[1em] justify-evenly lg:flex lg:gap-[1em] lg:w-full lg:justify-evenly">
-          <div className="lg:w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-between px-4 shadow-md ring-1 ring-[#3C3B5E]  ">
+        <main className=" grid grid-cols-2 gap-[1em] justify-evenly md:flex md:gap-[2em] lg:gap-[1em]  md:w-full md:justify-evenly">
+          <div className="md:w-[184px] lg:w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-between px-4 shadow-md ring-1 ring-[#3C3B5E]  ">
             <h5 className="font-DM_SANS text-[18px] text-[#D4D3D9] leading-[120%] font-medium pt-4">
               Feels Like
             </h5>
@@ -95,7 +95,7 @@ function Country() {
               </h2>
             )}
           </div>
-          <div className="lg:w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-between px-4 shadow-md ring-1 ring-[#3C3B5E] ">
+          <div className="md:w-[184px] lg:w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-between px-4 shadow-md ring-1 ring-[#3C3B5E] ">
             <h5 className="font-DM_SANS text-[18px] text-[#D4D3D9] leading-[120%] font-medium pt-4">
               Humidity
             </h5>
@@ -107,7 +107,7 @@ function Country() {
               </h2>
             )}
           </div>
-          <div className="lg:w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-between px-4 shadow-md ring-1 ring-[#3C3B5E]  ">
+          <div className="md:w-[184px] lg:w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-between px-4 shadow-md ring-1 ring-[#3C3B5E]  ">
             <h5 className="font-DM_SANS text-[18px] text-[#D4D3D9] leading-[120%] font-medium pt-4">
               Wind
             </h5>
@@ -122,7 +122,7 @@ function Country() {
               </h2>
             )}
           </div>
-          <div className="lg:w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-between px-4  shadow-md ring-1 ring-[#3C3B5E]  ">
+          <div className="md:w-[184px] lg:w-[180px] h-[110px] bg-[#262540] rounded-md flex flex-col justify-between px-4  shadow-md ring-1 ring-[#3C3B5E]  ">
             <h5 className="font-DM_SANS text-[18px] text-[#D4D3D9] leading-[120%] font-medium pt-4">
               Precipitation
             </h5>

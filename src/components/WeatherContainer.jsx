@@ -13,7 +13,7 @@ function WeatherContainer() {
       {!isLoading && enabled && results?.length < 1 ? (
         <NotFound />
       ) : (
-        <div className="flex flex-col lg:flex-row w-full gap-5 justify-center  lg:h-[550px]  lg:items-start">
+        <div className="flex flex-col lg:flex-row w-full gap-5 justify-center pb-3 lg:pb-0 lg:h-[550px]  lg:items-start">
           <Country />
           <HourlyForecast />
         </div>

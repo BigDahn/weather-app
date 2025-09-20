@@ -20,13 +20,13 @@ function DailyForeCast() {
 
   const { time, temperature_2m_max, temperature_2m_min, weather_code } = daily;
   return (
-    <div className="grid grid-cols-3 lg:flex gap-3">
+    <div className="grid grid-cols-3 md:flex gap-3">
       {isLoading || Object.keys(daily).length < 1
         ? defaultTime.map((s) => {
             return (
               <div
                 key={s}
-                className="lg:w-[100px] h-[130px] bg-[#262540] rounded-md px-3 flex flex-col justify-center shadow-md ring-1 ring-[#3C3B5E] "
+                className="lg:w-[100px] md:w-[110px] h-[130px] bg-[#262540] rounded-md px-3 flex flex-col justify-center shadow-md ring-1 ring-[#3C3B5E] "
               ></div>
             );
           })
@@ -34,7 +34,7 @@ function DailyForeCast() {
             return (
               <div
                 key={i}
-                className="lg:w-[100px] h-[130px] bg-[#262540] rounded-md px-3 flex flex-col justify-center"
+                className="lg:w-[100px] md:w-[110px]  h-[130px] bg-[#262540] rounded-md px-3 flex flex-col justify-center"
               >
                 <div className="flex flex-col items-center">
                   <h3 className="font-DM_SANS text-[18px] text-white font-medium leading-[120%]">
